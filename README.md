@@ -34,11 +34,11 @@ curl -fsSL https://raw.githubusercontent.com/devkwak73/claude-office/main/instal
 
 ---
 
-## 🎬 데모 영상
+## 🎬 데모
 
-<video src="https://raw.githubusercontent.com/devkwak73/claude-office/main/클로드워킹.mp4" controls width="100%" muted></video>
+![claude-office 데모](docs/demo.gif)
 
-> 영상이 자동 재생되지 않는다면 [▶ 영상 다운로드](클로드워킹.mp4) 또는 raw 링크로 확인하세요.
+> 원본 영상(4.5MB MP4)은 [v0.1.0 release](https://github.com/devkwak73/claude-office/releases/tag/v0.1.0) 에서 다운로드 가능합니다.
 
 ### 화면 구성
 
