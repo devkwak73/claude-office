@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Agent View</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #0f1115; color: #eee; }
+    main { max-width: 720px; margin: 60px auto; padding: 24px; }
+    h1 { font-weight: 600; }
+    .card { background: #1a1d24; border-radius: 8px; padding: 16px; margin-top: 12px; }
+    code { background: #0a0c10; padding: 2px 6px; border-radius: 4px; }
+    pre { background: #0a0c10; padding: 12px; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>agent-view</h1>
+  <div class="card">데몬은 살아있습니다. 프론트엔드 빌드 전 placeholder 페이지입니다.</div>
+  <div class="card">
+    <div>스킬 목록 확인: <code>GET /api/skills</code></div>
+    <div>이벤트 핑: <code>POST /api/emit</code> (JSON)</div>
+    <div>최근 이벤트: <code>GET /api/events/recent</code></div>
+    <div>WebSocket: <code>ws://127.0.0.1:7878/ws</code></div>
+  </div>
+  <pre id="log">대기 중...</pre>
+</main>
+<script>
+  const log = document.getElementById('log');
+  function append(s){ log.textContent = (s + '\n' + log.textContent).slice(0, 4000); }
+  const ws = new WebSocket(`ws://${location.host}/ws`);
+  ws.onmessage = e => append(e.data);
+  ws.onopen = () => append('[ws] connected');
+  ws.onclose = () => append('[ws] closed');
+</script>
+</body>
+</html>

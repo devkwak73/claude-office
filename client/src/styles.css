@@ -1,0 +1,153 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1115;
+  --panel: #161a22;
+  --panel-2: #1d222c;
+  --line: #262c38;
+  --text: #e6e8ec;
+  --muted: #8a93a3;
+  --accent: #ffb454;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-rows: 40px 1fr 160px;
+  grid-template-areas:
+    "header header"
+    "stage  side"
+    "logs   side";
+  gap: 6px;
+  padding: 6px;
+  height: 100vh;
+}
+
+.topbar-row {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-family: 'Pretendard', system-ui, sans-serif;
+}
+.tb-left { display: flex; align-items: center; gap: 8px; color: var(--muted); flex-shrink: 0; }
+.tb-left .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #5cd97b; }
+.tb-left .dot.off { background: #777; }
+.tb-label { font-family: 'JetBrains Mono', monospace; }
+
+.tb-center { display: flex; align-items: center; gap: 6px; justify-content: center; flex-wrap: nowrap; min-width: 0; overflow: hidden; }
+.tb-stat { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background: var(--panel-2); border-radius: 6px; white-space: nowrap; }
+.tb-stat-wide { padding: 4px 10px; }
+.tb-stat-ico { font-size: 12px; }
+.tb-stat-val { font-weight: 600; color: var(--text); }
+.tb-stat-divider { color: var(--muted); margin: 0 2px; }
+.tb-sep { width: 1px; height: 16px; background: var(--line); margin: 0 2px; flex-shrink: 0; }
+
+.tb-right { justify-self: end; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.tb-uptime { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+
+.stage {
+  grid-area: stage;
+  background: var(--panel);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+}
+
+.stage canvas { display: block; width: 100% !important; height: 100% !important; }
+
+.side {
+  grid-area: side;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.side h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.logs {
+  grid-area: logs;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 10px 12px;
+  overflow-y: auto;
+  font-family: 'JetBrains Mono', 'Consolas', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.log-row { display: flex; gap: 10px; padding: 2px 0; border-bottom: 1px dashed transparent; }
+.log-row:hover { background: rgba(255,255,255,0.02); }
+.log-time { color: var(--muted); flex-shrink: 0; width: 70px; }
+.log-kind { color: var(--accent); flex-shrink: 0; width: 110px; }
+.log-msg { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.stat:last-child { border: 0; }
+.stat-val { color: var(--accent); font-weight: 600; }
+
+.skill-list {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.skill-list .item {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--panel-2);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.skill-list .item .src { color: var(--muted); font-size: 11px; }
+.skill-list .item.active { background: rgba(255, 180, 84, 0.18); color: var(--accent); }
+
+.demo-btn {
+  background: var(--accent);
+  color: #1a1a1a;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.demo-btn:hover { background: #ffc66c; }
+.demo-btn:active { transform: translateY(1px); }

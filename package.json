@@ -1,0 +1,30 @@
+{
+  "name": "claude-office",
+  "version": "0.1.0",
+  "description": "Claude Code가 일하는 모습을 픽셀 사무실로 보여주는 실시간 시각화 데몬",
+  "license": "MIT",
+  "author": "devkwak73",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devkwak73/claude-office.git"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "bun run scripts/start-with-browser.mjs",
+    "start:daemon": "bun run server/index.ts",
+    "dev": "bun run --hot server/index.ts",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm install && npm run build",
+    "build:client": "cd client && npm run build",
+    "install:hooks": "node scripts/install-hooks.mjs",
+    "uninstall:hooks": "node scripts/install-hooks.mjs --uninstall"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.13",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+*.log
+.DS_Store
+.env
+bun.lockb
+package-lock.json
+client/node_modules/
+
+# 임시 파일
+_tmp_*.json
+scripts/rone_*.php
+
+# IDE
+.vscode/
+.idea/
